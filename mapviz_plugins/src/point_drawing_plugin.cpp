@@ -202,7 +202,7 @@ namespace mapviz_plugins
       new_lap_ = true;
       if (points_.size() > 0)
       {
-        laps_.push_back(points_);
+        laps_.push_back(std::move(points_));
         laps_[0].pop_back();
         points_.clear();
         points_.push_back(cur_point_);

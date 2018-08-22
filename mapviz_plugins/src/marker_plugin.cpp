@@ -315,9 +315,13 @@ namespace mapviz_plugins
       {
         tf::Transform tfTransform(transform.GetTF());
         tfTransform *= markerData.local_transform.GetTF();
+
+        size_t startIndex = markerData.points.size();
+        markerData.points.resize(startIndex + marker.points.size());
+        auto it = markerData.points.begin() + startIndex;
         for (unsigned int i = 0; i < marker.points.size(); i++)
         {
-          StampedPoint point;
+          StampedPoint& point = *it;
           point.point = tf::Point(marker.points[i].x, marker.points[i].y, marker.points[i].z);
           point.transformed_point = tfTransform * point.point;
 
@@ -333,8 +337,7 @@ namespace mapviz_plugins
           {
             point.color = markerData.color;
           }
-
-          markerData.points.push_back(point);
+          ++it;
         }
       }
     }

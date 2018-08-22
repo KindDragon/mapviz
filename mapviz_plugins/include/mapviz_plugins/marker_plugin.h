@@ -32,8 +32,9 @@
 
 // C++ standard libraries
 #include <string>
-#include <list>
+#include <deque>
 #include <map>
+#include <unordered_map>
 
 #include <mapviz/mapviz_plugin.h>
 
@@ -120,7 +121,7 @@ namespace mapviz_plugins
       int display_type;
       QColor color;
 
-      std::list<StampedPoint> points;
+      std::deque<StampedPoint> points;
       std::string text;
 
       float scale_x;
@@ -142,7 +143,7 @@ namespace mapviz_plugins
     bool connected_;
     bool has_message_;
 
-    std::map<std::string, std::map<int, MarkerData> > markers_;
+    std::unordered_map<std::string, std::map<int, MarkerData> > markers_;
 
     void handleMessage(const topic_tools::ShapeShifter::ConstPtr& msg);
     void handleMarker(const visualization_msgs::Marker &marker);
