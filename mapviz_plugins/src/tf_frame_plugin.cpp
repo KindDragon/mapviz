@@ -119,13 +119,20 @@ namespace mapviz_plugins
       stamped_point.stamp = transform.GetStamp();
       stamped_point.transformed = false;
 
-      double distance = std::sqrt(
-          std::pow(stamped_point.point.x() - points_.back().point.x(), 2) +
-          std::pow(stamped_point.point.y() - points_.back().point.y(), 2));
-
-      if (points_.empty() || distance >= position_tolerance_)
+      if (points_.empty())
       {
         points_.push_back(stamped_point);
+      }
+      else
+      {
+        double distance = std::sqrt(
+          std::pow(stamped_point.point.x() - points_.back().point.x(), 2) +
+            std::pow(stamped_point.point.y() - points_.back().point.y(), 2));
+
+        if (distance >= position_tolerance_)
+        {
+          points_.push_back(stamped_point);
+        }
       }
 
       if (buffer_size_ > 0)
