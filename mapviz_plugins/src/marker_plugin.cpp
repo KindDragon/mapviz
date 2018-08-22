@@ -258,21 +258,24 @@ namespace mapviz_plugins
           markerData.display_type == visualization_msgs::Marker::SPHERE ||
           markerData.display_type == visualization_msgs::Marker::SPHERE_LIST)
       {
+        tf::Transform tfTransform(transform.GetTF());
+        tfTransform *= markerData.local_transform.GetTF();
+
         StampedPoint point;
         point.color = markerData.color;
         if (markerData.display_type == visualization_msgs::Marker::CYLINDER ||
             markerData.display_type == visualization_msgs::Marker::SPHERE)
         {
           point.point = tf::Point(0.0, 0.0, 0.0);
-          point.transformed_point = transform * (markerData.local_transform * point.point);
+          point.transformed_point = tfTransform * point.point;
           markerData.points.push_back(point);
         }
         else
         {
-          Q_FOREACH (const geometry_msgs::Point& markerPoint, marker.points)
+          for(const auto& markerPoint : marker.points)
           {
             point.point = tf::Point(markerPoint.x, markerPoint.y, markerPoint.z);
-            point.transformed_point = transform * (markerData.local_transform * point.point);
+            point.transformed_point = tfTransform * point.point;
             markerData.points.push_back(point);
           }
         }
@@ -310,11 +313,13 @@ namespace mapviz_plugins
       }
       else
       {
+        tf::Transform tfTransform(transform.GetTF());
+        tfTransform *= markerData.local_transform.GetTF();
         for (unsigned int i = 0; i < marker.points.size(); i++)
         {
           StampedPoint point;
           point.point = tf::Point(marker.points[i].x, marker.points[i].y, marker.points[i].z);
-          point.transformed_point = transform * (markerData.local_transform * point.point);
+          point.transformed_point = tfTransform * point.point;
 
           if (i < marker.colors.size())
           {
@@ -455,33 +460,30 @@ namespace mapviz_plugins
               }
               glBegin(GL_LINES);
 
-              std::list<StampedPoint>::iterator point_it = marker.points.begin();
-              for (; point_it != marker.points.end(); ++point_it)
+              for (const auto &point : marker.points)
               {
-                glColor4d(
-                    point_it->color.redF(),
-                    point_it->color.greenF(),
-                    point_it->color.blueF(),
-                    point_it->color.alphaF());
+                double r, g, b, a;
+                point.color.getRgbF(&r, &g, &b, &a);
+                glColor4d(r, g, b, a);
 
                 glVertex2d(
-                    point_it->transformed_point.getX(),
-                    point_it->transformed_point.getY());
+                    point.transformed_point.getX(),
+                    point.transformed_point.getY());
                 glVertex2d(
-                    point_it->transformed_arrow_point.getX(),
-                    point_it->transformed_arrow_point.getY());
+                    point.transformed_arrow_point.getX(),
+                    point.transformed_arrow_point.getY());
                 glVertex2d(
-                    point_it->transformed_arrow_point.getX(),
-                    point_it->transformed_arrow_point.getY());
+                    point.transformed_arrow_point.getX(),
+                    point.transformed_arrow_point.getY());
                 glVertex2d(
-                    point_it->transformed_arrow_left.getX(),
-                    point_it->transformed_arrow_left.getY());
+                    point.transformed_arrow_left.getX(),
+                    point.transformed_arrow_left.getY());
                 glVertex2d(
-                    point_it->transformed_arrow_point.getX(),
-                    point_it->transformed_arrow_point.getY());
+                    point.transformed_arrow_point.getX(),
+                    point.transformed_arrow_point.getY());
                 glVertex2d(
-                    point_it->transformed_arrow_right.getX(),
-                    point_it->transformed_arrow_right.getY());
+                    point.transformed_arrow_right.getX(),
+                    point.transformed_arrow_right.getY());
               }
 
               glEnd();
@@ -491,19 +493,16 @@ namespace mapviz_plugins
               glLineWidth(marker.scale_x);
               glBegin(GL_LINE_STRIP);
 
-                std::list<StampedPoint>::iterator point_it = marker.points.begin();
-                for (; point_it != marker.points.end(); ++point_it)
-                {
-                  glColor4d(
-                      point_it->color.redF(),
-                      point_it->color.greenF(),
-                      point_it->color.blueF(),
-                      point_it->color.alphaF());
+              for (const auto &point : marker.points)
+              {
+                double r, g, b, a;
+                point.color.getRgbF(&r, &g, &b, &a);
+                glColor4d(r, g, b, a);
 
-                  glVertex2d(
-                      point_it->transformed_point.getX(),
-                      point_it->transformed_point.getY());
-                }
+                glVertex2d(
+                    point.transformed_point.getX(),
+                    point.transformed_point.getY());
+              }
 
               glEnd();
             }
@@ -512,19 +511,16 @@ namespace mapviz_plugins
               glLineWidth(marker.scale_x);
               glBegin(GL_LINES);
 
-                std::list<StampedPoint>::iterator point_it = marker.points.begin();
-                for (; point_it != marker.points.end(); ++point_it)
-                {
-                  glColor4d(
-                      point_it->color.redF(),
-                      point_it->color.greenF(),
-                      point_it->color.blueF(),
-                      point_it->color.alphaF());
+              for (const auto &point : marker.points)
+              {
+                double r, g, b, a;
+                point.color.getRgbF(&r, &g, &b, &a);
+                glColor4d(r, g, b, a);
 
-                  glVertex2d(
-                      point_it->transformed_point.getX(),
-                      point_it->transformed_point.getY());
-                }
+                glVertex2d(
+                    point.transformed_point.getX(),
+                    point.transformed_point.getY());
+              }
 
               glEnd();
             }
@@ -533,18 +529,15 @@ namespace mapviz_plugins
               glPointSize(marker.scale_x);
               glBegin(GL_POINTS);
 
-              std::list<StampedPoint>::iterator point_it = marker.points.begin();
-              for (; point_it != marker.points.end(); ++point_it)
+              for (const auto &point : marker.points)
               {
-                glColor4d(
-                    point_it->color.redF(),
-                    point_it->color.greenF(),
-                    point_it->color.blueF(),
-                    point_it->color.alphaF());
+                double r, g, b, a;
+                point.color.getRgbF(&r, &g, &b, &a);
+                glColor4d(r, g, b, a);
 
                 glVertex2d(
-                    point_it->transformed_point.getX(),
-                    point_it->transformed_point.getY());
+                    point.transformed_point.getX(),
+                    point.transformed_point.getY());
               }
 
               glEnd();
@@ -553,18 +546,15 @@ namespace mapviz_plugins
             {
               glBegin(GL_TRIANGLES);
 
-              std::list<StampedPoint>::iterator point_it = marker.points.begin();
-              for (; point_it != marker.points.end(); ++point_it)
+              for (const auto &point : marker.points)
               {
-                glColor4d(
-                    point_it->color.redF(),
-                    point_it->color.greenF(),
-                    point_it->color.blueF(),
-                    point_it->color.alphaF());
+                double r, g, b, a;
+                point.color.getRgbF(&r, &g, &b, &a);
+                glColor4d(r, g, b, a);
 
                 glVertex2d(
-                    point_it->transformed_point.getX(),
-                    point_it->transformed_point.getY());
+                    point.transformed_point.getX(),
+                    point.transformed_point.getY());
               }
 
               glEnd();
@@ -573,21 +563,18 @@ namespace mapviz_plugins
                 marker.display_type == visualization_msgs::Marker::SPHERE ||
                 marker.display_type == visualization_msgs::Marker::SPHERE_LIST)
             {
-              std::list<StampedPoint>::iterator point_it = marker.points.begin();
-              for (; point_it != marker.points.end(); ++point_it)
+              for (const auto &point : marker.points)
               {
-                glColor4d(
-                    point_it->color.redF(),
-                    point_it->color.greenF(),
-                    point_it->color.blueF(),
-                    point_it->color.alphaF());
+                double r, g, b, a;
+                point.color.getRgbF(&r, &g, &b, &a);
+                glColor4d(r, g, b, a);
 
 
                 glBegin(GL_TRIANGLE_FAN);
 
 
-                double marker_x = point_it->transformed_point.getX();
-                double marker_y = point_it->transformed_point.getY();
+                double marker_x = point.transformed_point.getX();
+                double marker_y = point.transformed_point.getY();
 
                 glVertex2d(marker_x, marker_y);
 
@@ -610,17 +597,14 @@ namespace mapviz_plugins
             else if (marker.display_type == visualization_msgs::Marker::CUBE ||
                 marker.display_type == visualization_msgs::Marker::CUBE_LIST)
             {
-              std::list<StampedPoint>::iterator point_it = marker.points.begin();
               glBegin(GL_TRIANGLE_FAN);
-              for (; point_it != marker.points.end(); ++point_it)
+              for (const auto &point : marker.points)
               {
-                glColor4d(
-                    point_it->color.redF(),
-                    point_it->color.greenF(),
-                    point_it->color.blueF(),
-                    point_it->color.alphaF());
+                double r, g, b, a;
+                point.color.getRgbF(&r, &g, &b, &a);
+                glColor4d(r, g, b, a);
 
-                glVertex2d(point_it->transformed_point.getX(), point_it->transformed_point.getY());
+                glVertex2d(point.transformed_point.getX(), point.transformed_point.getY());
               }
               glEnd();
             }
@@ -710,10 +694,11 @@ namespace mapviz_plugins
           }
           else
           {
-            std::list<StampedPoint>::iterator point_it;
-            for (point_it = marker.points.begin(); point_it != marker.points.end(); ++point_it)
+            tf::Transform tfTransform(transform.GetTF());
+            tfTransform *= marker.local_transform.GetTF();
+            for (auto &point : marker.points)
             {
-              point_it->transformed_point = transform * (marker.local_transform * point_it->point);
+              point.transformed_point = tfTransform * point.point;
             }
           }
         }
