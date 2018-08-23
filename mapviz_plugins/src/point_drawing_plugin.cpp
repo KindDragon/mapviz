@@ -231,13 +231,12 @@ namespace mapviz_plugins
       glBegin(GL_POINTS);
     }
 
-    std::list<StampedPoint>::iterator it = points_.begin();
-    for (; it != points_.end(); ++it)
+    for (const auto& pt : points_)
     {
-      success &= it->transformed;
-      if (it->transformed)
+      success &= pt.transformed;
+      if (pt.transformed)
       {
-        glVertex2d(it->transformed_point.getX(), it->transformed_point.getY());
+        glVertex2d(pt.transformed_point.getX(), pt.transformed_point.getY());
       }
     }
 
@@ -282,10 +281,9 @@ namespace mapviz_plugins
     glLineWidth(2);
     glBegin(GL_LINES);
     glColor4d(color_.redF(), color_.greenF(), color_.blueF(), 0.5);
-    std::list<StampedPoint>::iterator it = points_.begin();
-    for (; it != points_.end(); ++it)
+    for (const auto &pt : points_)
     {
-      success &= DrawArrow(*it);
+      success &= DrawArrow(pt);
     }
 
     success &= DrawArrow(cur_point_);
@@ -353,21 +351,19 @@ namespace mapviz_plugins
   {
     bool transformed = false;
 
-    std::list<StampedPoint>::iterator points_it = points_.begin();
-    for (; points_it != points_.end(); ++points_it)
+    for (auto &pt : points_)
     {
-      transformed = transformed | TransformPoint(*points_it);
+      transformed = transformed | TransformPoint(pt);
     }
 
     transformed = transformed | TransformPoint(cur_point_);
     if (laps_.size() > 0)
     {
-      for (size_t i = 0; i < laps_.size(); i++)
+      for (auto &lap : laps_)
       {
-        std::list<StampedPoint>::iterator lap_it = laps_[i].begin();
-        for (; lap_it != laps_[i].end(); ++lap_it)
+        for (auto &pt : lap)
         {
-          transformed = transformed | TransformPoint(*lap_it);
+          transformed = transformed | TransformPoint(pt);
         }
       }
     }
@@ -400,13 +396,12 @@ namespace mapviz_plugins
           glBegin(GL_POINTS);
         }
 
-        std::list<StampedPoint>::iterator it = laps_[i].begin();
-        for (; it != laps_[i].end(); it++)
+        for (const auto& pt : laps_[i])
         {
-          if (it->transformed)
+          if (pt.transformed)
           {
-            glVertex2d(it->transformed_point.getX(),
-                       it->transformed_point.getY());
+            glVertex2d(pt.transformed_point.getX(),
+                       pt.transformed_point.getY());
           }
         }
         glEnd();
@@ -428,14 +423,13 @@ namespace mapviz_plugins
 
     if (points_.size() > 0)
     {
-      std::list<StampedPoint>::iterator it = points_.begin();
-      for (; it != points_.end(); ++it)
+      for (const auto &pt : points_)
       {
-        transformed &= it->transformed;
-        if (it->transformed)
+        transformed &= pt.transformed;
+        if (pt.transformed)
         {
-          glVertex2d(it->transformed_point.getX(),
-                     it->transformed_point.getY());
+          glVertex2d(pt.transformed_point.getX(),
+                     pt.transformed_point.getY());
         }
       }
     }
@@ -469,11 +463,10 @@ namespace mapviz_plugins
       for (size_t i = 0; i < laps_.size(); i++)
       {
         UpdateColor(base_color, static_cast<int>(i));
-        std::list<StampedPoint>::iterator it = laps_[i].begin();
-        for (; it != laps_[i].end(); ++it)
+        for (const auto &pt : laps_[i])
         {
           glBegin(GL_LINE_STRIP);
-          success &= DrawArrow(*it);
+          success &= DrawArrow(pt);
           glEnd();
         }
       }
@@ -489,11 +482,10 @@ namespace mapviz_plugins
 
     if (points_.size() > 0)
     {
-      std::list<StampedPoint>::iterator it = points_.begin();
-      for (; it != points_.end(); ++it)
+      for (const auto& pt : points_)
       {
         glBegin(GL_LINE_STRIP);
-        success &= DrawArrow(*it);
+        success &= DrawArrow(pt);
         glEnd();
       }
     }
