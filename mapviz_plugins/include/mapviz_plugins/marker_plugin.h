@@ -59,6 +59,15 @@
 
 namespace mapviz_plugins
 {
+  struct MarkerIdHash {
+    std::size_t operator () (const std::pair<std::string, int> &p) const {
+      std::size_t seed = 0;
+      boost::hash_combine(seed, p.first);
+      boost::hash_combine(seed, p.second);
+      return seed;
+    }
+  };
+
   class MarkerPlugin : public mapviz::MapvizPlugin
   {
     Q_OBJECT
@@ -143,7 +152,7 @@ namespace mapviz_plugins
     bool connected_;
     bool has_message_;
 
-    std::unordered_map<std::string, std::map<int, MarkerData> > markers_;
+    std::unordered_map<std::pair<std::string, int>, MarkerData, MarkerIdHash> markers_;
 
     void handleMessage(const topic_tools::ShapeShifter::ConstPtr& msg);
     void handleMarker(const visualization_msgs::Marker &marker);
