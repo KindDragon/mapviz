@@ -121,7 +121,7 @@ namespace mapviz_plugins
       int display_type;
       QColor color;
 
-      std::deque<StampedPoint> points;
+      std::vector<StampedPoint> points;
       std::string text;
 
       float scale_x;

@@ -272,6 +272,7 @@ namespace mapviz_plugins
         }
         else
         {
+          markerData.points.reserve(markerData.points.size() + marker.points.size());
           for(const auto& markerPoint : marker.points)
           {
             point.point = tf::Point(markerPoint.x, markerPoint.y, markerPoint.z);
@@ -316,12 +317,11 @@ namespace mapviz_plugins
         tf::Transform tfTransform(transform.GetTF());
         tfTransform *= markerData.local_transform.GetTF();
 
-        size_t startIndex = markerData.points.size();
-        markerData.points.resize(startIndex + marker.points.size());
-        auto it = markerData.points.begin() + startIndex;
+        markerData.points.reserve(markerData.points.size() + marker.points.size());
         for (unsigned int i = 0; i < marker.points.size(); i++)
         {
-          StampedPoint& point = *it;
+          markerData.points.emplace_back();
+          StampedPoint& point = markerData.points.back();
           point.point = tf::Point(marker.points[i].x, marker.points[i].y, marker.points[i].z);
           point.transformed_point = tfTransform * point.point;
 
@@ -337,7 +337,6 @@ namespace mapviz_plugins
           {
             point.color = markerData.color;
           }
-          ++it;
         }
       }
     }
