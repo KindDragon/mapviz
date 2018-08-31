@@ -126,7 +126,7 @@ namespace mapviz_plugins
     else
     {
       PrintError("Unknown message type: " + msg->getDataType());
-    }    
+    }
   }
 
   void MarkerPlugin::handleMarker(const visualization_msgs::Marker &marker)
@@ -152,6 +152,8 @@ namespace mapviz_plugins
     if (marker.action == visualization_msgs::Marker::ADD)
     {
       MarkerData& markerData = markers_[std::make_pair(marker.ns, marker.id)];
+      markerData.points.clear(); // clear marker points
+      markerData.text.clear(); // clear marker text
       markerData.stamp = marker.header.stamp;
       markerData.display_type = marker.type;
       markerData.color = {marker.color.r, marker.color.g, marker.color.b, marker.color.a};
@@ -176,13 +178,12 @@ namespace mapviz_plugins
                                      marker.pose.orientation.z,
                                      marker.pose.orientation.w);
       }
-      
-      markerData.local_transform =  swri_transform_util::Transform(
-        tf::Transform(
+
+      markerData.local_transform = tf::Transform(
           orientation,
           tf::Vector3(marker.pose.position.x,
                       marker.pose.position.y,
-                      marker.pose.position.z)));
+                      marker.pose.position.z));
 
       markerData.points.clear();
       markerData.text = std::string();
@@ -240,31 +241,15 @@ namespace mapviz_plugins
         transformArrow(markerData, transform);
       }
       else if (markerData.display_type == visualization_msgs::Marker::CYLINDER ||
-          markerData.display_type == visualization_msgs::Marker::SPHERE ||
-          markerData.display_type == visualization_msgs::Marker::SPHERE_LIST)
+        markerData.display_type == visualization_msgs::Marker::SPHERE ||
+        markerData.display_type == visualization_msgs::Marker::TEXT_VIEW_FACING)
       {
-        tf::Transform tfTransform(transform.GetTF());
-        tfTransform *= markerData.local_transform.GetTF();
-
         StampedPoint point;
+        point.point = tf::Point(0.0, 0.0, 0.0);
+        point.transformed_point = transform * (markerData.local_transform * point.point);
         point.color = markerData.color;
-        if (markerData.display_type == visualization_msgs::Marker::CYLINDER ||
-            markerData.display_type == visualization_msgs::Marker::SPHERE)
-        {
-          point.point = tf::Point(0.0, 0.0, 0.0);
-          point.transformed_point = tfTransform * point.point;
-          markerData.points.push_back(point);
-        }
-        else
-        {
-          markerData.points.reserve(markerData.points.size() + marker.points.size());
-          for(const auto& markerPoint : marker.points)
-          {
-            point.point = tf::Point(markerPoint.x, markerPoint.y, markerPoint.z);
-            point.transformed_point = tfTransform * point.point;
-            markerData.points.push_back(point);
-          }
-        }
+        markerData.points.push_back(point);
+        markerData.text = marker.text;
       }
       else if (markerData.display_type == visualization_msgs::Marker::CUBE)
       {
@@ -287,26 +272,20 @@ namespace mapviz_plugins
         point.transformed_point = transform * (markerData.local_transform * point.point);
         markerData.points.push_back(point);
       }
-      else if (markerData.display_type == visualization_msgs::Marker::TEXT_VIEW_FACING)
-      {
-        StampedPoint point;
-        point.point = tf::Point(0.0, 0.0, 0.0);
-        point.transformed_point = transform * (markerData.local_transform * point.point);
-        point.color = markerData.color;
-
-        markerData.points.push_back(point);
-        markerData.text = marker.text;
-      }
-      else
+      else if (markerData.display_type == visualization_msgs::Marker::LINE_STRIP ||
+        markerData.display_type == visualization_msgs::Marker::LINE_LIST ||
+        markerData.display_type == visualization_msgs::Marker::CUBE_LIST ||
+        markerData.display_type == visualization_msgs::Marker::SPHERE_LIST ||
+        markerData.display_type == visualization_msgs::Marker::POINTS ||
+        markerData.display_type == visualization_msgs::Marker::TRIANGLE_LIST)
       {
         tf::Transform tfTransform(transform.GetTF());
-        tfTransform *= markerData.local_transform.GetTF();
+        tfTransform *= markerData.local_transform;
 
-        markerData.points.reserve(markerData.points.size() + marker.points.size());
+        markerData.points.reserve(marker.points.size());
+        StampedPoint point;
         for (unsigned int i = 0; i < marker.points.size(); i++)
         {
-          markerData.points.emplace_back();
-          StampedPoint& point = markerData.points.back();
           point.point = tf::Point(marker.points[i].x, marker.points[i].y, marker.points[i].z);
           point.transformed_point = tfTransform * point.point;
 
@@ -318,7 +297,13 @@ namespace mapviz_plugins
           {
             point.color = markerData.color;
           }
+
+          markerData.points.push_back(point);
         }
+      }
+      else
+      {
+        ROS_WARN_ONCE("Unsupported marker type: %d", markerData.display_type);
       }
     }
     else if (marker.action == visualization_msgs::Marker::DELETE)
@@ -638,7 +623,7 @@ namespace mapviz_plugins
         else
         {
           tf::Transform tfTransform(transform.GetTF());
-          tfTransform *= marker.local_transform.GetTF();
+          tfTransform *= marker.local_transform;
           for (auto &point : marker.points)
           {
             point.transformed_point = tfTransform * point.point;
@@ -659,7 +644,7 @@ namespace mapviz_plugins
       std::string topic;
       node["topic"] >> topic;
       ui_.topic->setText(boost::trim_copy(topic).c_str());
-      
+
       TopicEdited();
     }
   }

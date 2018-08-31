@@ -137,7 +137,7 @@ namespace mapviz_plugins
       float scale_z;
 
       std::string source_frame;
-      swri_transform_util::Transform local_transform;
+      tf::Transform local_transform;
       
       bool transformed;
     };
