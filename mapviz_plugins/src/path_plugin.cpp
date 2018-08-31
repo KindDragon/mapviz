@@ -127,6 +127,12 @@ namespace mapviz_plugins
 
       points_.push_back(stamped_point);
     }
+
+    if (points_.size() > 0)
+    {
+      cur_point_ = points_.back();
+      points_.back();
+    }
   }
 
   void PathPlugin::PrintError(const std::string& message)
