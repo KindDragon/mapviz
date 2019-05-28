@@ -31,7 +31,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>20</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -275,6 +275,12 @@
      </item>
      <item>
       <widget class="mapviz::PluginConfigList" name="configs">
+       <property name="font">
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
        <property name="horizontalScrollBarPolicy">
         <enum>Qt::ScrollBarAsNeeded</enum>
        </property>

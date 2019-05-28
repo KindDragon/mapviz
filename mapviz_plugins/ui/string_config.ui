@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>211</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+    <pointsize>8</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -17,20 +23,23 @@
    <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>2</number>
+   </property>
+   <property name="topMargin">
+    <number>2</number>
+   </property>
+   <property name="rightMargin">
+    <number>2</number>
+   </property>
+   <property name="bottomMargin">
+    <number>2</number>
+   </property>
    <property name="verticalSpacing">
     <number>4</number>
    </property>
-   <property name="margin">
-    <number>2</number>
-   </property>
    <item row="11" column="0">
     <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Status:</string>
      </property>
@@ -44,12 +53,6 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -59,23 +62,10 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QLineEdit" name="topic">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="topic"/>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Topic:</string>
      </property>
@@ -83,12 +73,6 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="font_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Font:</string>
      </property>
@@ -102,12 +86,6 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Helvetica</string>
      </property>
@@ -115,12 +93,6 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="color_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Color:</string>
      </property>
@@ -152,12 +124,6 @@
        <width>16777215</width>
        <height>25</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>9</pointsize>
-      </font>
      </property>
      <item>
       <property name="text">
@@ -208,12 +174,6 @@
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="label_3">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Anchor:</string>
      </property>
@@ -221,12 +181,6 @@
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="label_4">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Offset X:</string>
      </property>
@@ -241,12 +195,6 @@
    </item>
    <item row="11" column="1" colspan="2">
     <widget class="QLabel" name="status">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -260,12 +208,6 @@
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="label_5">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Offset Y:</string>
      </property>
@@ -280,12 +222,6 @@
    </item>
    <item row="10" column="0">
     <widget class="QLabel" name="label_8">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Units:</string>
      </property>
@@ -298,12 +234,6 @@
        <width>16777213</width>
        <height>25</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>9</pointsize>
-      </font>
      </property>
      <item>
       <property name="text">
@@ -326,6 +256,16 @@
    <header location="global">mapviz/color_button.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>topic</tabstop>
+  <tabstop>selecttopic</tabstop>
+  <tabstop>font_button</tabstop>
+  <tabstop>color</tabstop>
+  <tabstop>anchor</tabstop>
+  <tabstop>offsetx</tabstop>
+  <tabstop>offsety</tabstop>
+  <tabstop>units</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
  <slots>

@@ -10,6 +10,12 @@
     <height>141</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -17,20 +23,23 @@
    <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>2</number>
+   </property>
+   <property name="topMargin">
+    <number>2</number>
+   </property>
+   <property name="rightMargin">
+    <number>2</number>
+   </property>
+   <property name="bottomMargin">
+    <number>2</number>
+   </property>
    <property name="verticalSpacing">
     <number>4</number>
    </property>
-   <property name="margin">
-    <number>2</number>
-   </property>
    <item row="3" column="0">
     <widget class="QLabel" name="url_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Base URL:</string>
      </property>
@@ -38,12 +47,6 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Source:</string>
      </property>
@@ -51,12 +54,6 @@
    </item>
    <item row="7" column="1" colspan="3">
     <widget class="QLabel" name="status">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -70,12 +67,6 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="label_6">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Max Zoom:</string>
      </property>
@@ -158,12 +149,6 @@
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Status:</string>
      </property>

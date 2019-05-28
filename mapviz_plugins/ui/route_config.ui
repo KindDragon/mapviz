@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>201</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+    <pointsize>8</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -53,12 +59,6 @@
        <height>25</height>
       </size>
      </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>9</pointsize>
-      </font>
-     </property>
      <property name="maxVisibleItems">
       <number>2</number>
      </property>
@@ -79,12 +79,6 @@
    </item>
    <item row="10" column="2" colspan="2">
     <widget class="QLabel" name="status">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -98,12 +92,6 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_3">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Color:</string>
      </property>
@@ -111,12 +99,6 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Topic:</string>
      </property>
@@ -129,12 +111,6 @@
        <width>55</width>
        <height>16777215</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
      </property>
      <property name="cursor">
       <cursorShape>CrossCursor</cursorShape>
@@ -149,12 +125,6 @@
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="label_7">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Draw Style:</string>
      </property>
@@ -183,22 +153,10 @@
     <widget class="QLineEdit" name="positiontopic"/>
    </item>
    <item row="2" column="2">
-    <widget class="QLineEdit" name="topic">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="topic"/>
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="label_4">
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Position Topic:</string>
      </property>
@@ -215,11 +173,6 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Select</string>
      </property>
@@ -227,11 +180,6 @@
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="label_5">
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Waypoint Color:</string>
      </property>
@@ -239,12 +187,6 @@
    </item>
    <item row="10" column="0">
     <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Status:</string>
      </property>
@@ -265,11 +207,6 @@
    </item>
    <item row="9" column="0">
     <widget class="QLabel" name="label_6">
-     <property name="font">
-      <font>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Icon Size:</string>
      </property>
@@ -284,6 +221,16 @@
    <header location="global">mapviz/color_button.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>topic</tabstop>
+  <tabstop>selecttopic</tabstop>
+  <tabstop>color</tabstop>
+  <tabstop>drawstyle</tabstop>
+  <tabstop>positiontopic</tabstop>
+  <tabstop>selectpositiontopic</tabstop>
+  <tabstop>positioncolor</tabstop>
+  <tabstop>iconsize</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
  <slots>

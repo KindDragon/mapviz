@@ -10,6 +10,12 @@
     <height>159</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -34,12 +40,6 @@
    </property>
    <item row="6" column="0">
     <widget class="QLabel" name="label_6">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Buffer Size:</string>
      </property>
@@ -47,12 +47,6 @@
    </item>
    <item row="7" column="1" colspan="2">
     <widget class="QLabel" name="status">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -66,12 +60,6 @@
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="label_4">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Position Tolerance:</string>
      </property>
@@ -89,12 +77,6 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_3">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Color:</string>
      </property>
@@ -120,12 +102,6 @@
        <width>55</width>
        <height>16777215</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -155,14 +131,7 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QLineEdit" name="topic">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="topic"/>
    </item>
    <item row="3" column="1">
     <widget class="mapviz::ColorButton" name="color">
@@ -191,12 +160,6 @@
        <height>25</height>
       </size>
      </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>9</pointsize>
-      </font>
-     </property>
      <item>
       <property name="text">
        <string>lines</string>
@@ -211,12 +174,6 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Topic:</string>
      </property>
@@ -224,12 +181,6 @@
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Status:</string>
      </property>
@@ -237,12 +188,6 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="label_7">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Draw Style:</string>
      </property>
@@ -270,6 +215,15 @@
    <header location="global">mapviz/color_button.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>topic</tabstop>
+  <tabstop>selecttopic</tabstop>
+  <tabstop>color</tabstop>
+  <tabstop>drawstyle</tabstop>
+  <tabstop>positiontolerance</tabstop>
+  <tabstop>buffersize</tabstop>
+  <tabstop>buttonResetBuffer</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
  <slots>

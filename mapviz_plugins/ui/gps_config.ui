@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>222</height>
+    <height>245</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+    <pointsize>8</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -19,48 +25,33 @@
   <layout class="QFormLayout" name="formLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Topic:</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QLineEdit" name="topic">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="selecttopic">
-     <property name="maximumSize">
-      <size>
-       <width>55</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>Select</string>
-     </property>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLineEdit" name="topic"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="selecttopic">
+       <property name="maximumSize">
+        <size>
+         <width>55</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_3">
@@ -96,12 +87,6 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_7">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Draw Style:</string>
      </property>
@@ -114,12 +99,6 @@
        <width>16777215</width>
        <height>25</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>9</pointsize>
-      </font>
      </property>
      <item>
       <property name="text">
@@ -140,12 +119,6 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="label_8">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Static Arrow Sizes:</string>
      </property>
@@ -180,12 +153,6 @@
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="label_4">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Position Tolerance:</string>
      </property>
@@ -212,12 +179,6 @@
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="label_6">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Buffer Size:</string>
      </property>
@@ -250,41 +211,29 @@
      </item>
     </layout>
    </item>
-   <item row="7" column="0">
+   <item row="8" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
       <string>Show Laps</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
+   <item row="8" column="1">
     <widget class="QCheckBox" name="show_laps">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
-   <item row="8" column="0">
+   <item row="9" column="0">
     <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Status:</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="1">
+   <item row="9" column="1">
     <widget class="QLabel" name="status">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -296,7 +245,7 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="1">
+   <item row="10" column="1">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -318,6 +267,18 @@
    <header location="global">mapviz/color_button.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>topic</tabstop>
+  <tabstop>selecttopic</tabstop>
+  <tabstop>color</tabstop>
+  <tabstop>drawstyle</tabstop>
+  <tabstop>static_arrow_sizes</tabstop>
+  <tabstop>arrow_size</tabstop>
+  <tabstop>positiontolerance</tabstop>
+  <tabstop>buffersize</tabstop>
+  <tabstop>buttonResetBuffer</tabstop>
+  <tabstop>show_laps</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
  <slots>

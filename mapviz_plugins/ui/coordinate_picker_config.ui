@@ -10,6 +10,13 @@
     <height>304</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+    <pointsize>8</pointsize>
+    <italic>false</italic>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -34,9 +41,6 @@
    </property>
    <item row="6" column="0">
     <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font/>
-     </property>
      <property name="text">
       <string>Status:</string>
      </property>
@@ -44,9 +48,6 @@
    </item>
    <item row="6" column="2" colspan="2">
     <widget class="QLabel" name="status">
-     <property name="font">
-      <font/>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -107,6 +108,13 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>frame</tabstop>
+  <tabstop>selectframe</tabstop>
+  <tabstop>copyCheckBox</tabstop>
+  <tabstop>coordTextEdit</tabstop>
+  <tabstop>clearListButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
  <slots>

@@ -10,6 +10,12 @@
     <height>300</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Sans Serif</family>
+    <pointsize>8</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -19,12 +25,6 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="image_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Image File:</string>
      </property>
@@ -38,12 +38,6 @@
        <height>16777215</height>
       </size>
      </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -54,26 +48,13 @@
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="frame_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Frame:</string>
      </property>
     </widget>
    </item>
    <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="frame">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="frame"/>
    </item>
    <item row="2" column="3">
     <widget class="QPushButton" name="selectframe">
@@ -82,12 +63,6 @@
        <width>55</width>
        <height>16777215</height>
       </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
      </property>
      <property name="styleSheet">
       <string notr="true"/>
@@ -99,12 +74,6 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="width_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Width:</string>
      </property>
@@ -131,12 +100,6 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="height_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Height:</string>
      </property>
@@ -163,12 +126,6 @@
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="offset_x_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Offset x:</string>
      </property>
@@ -195,12 +152,6 @@
    </item>
    <item row="6" column="0">
     <widget class="QLabel" name="offset_y_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Offset y:</string>
      </property>
@@ -227,12 +178,6 @@
    </item>
    <item row="8" column="0">
     <widget class="QLabel" name="status_label">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="text">
       <string>Status:</string>
      </property>
@@ -240,12 +185,6 @@
    </item>
    <item row="8" column="1" colspan="2">
     <widget class="QLabel" name="status">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true"/>
      </property>
@@ -265,14 +204,7 @@
     </widget>
    </item>
    <item row="0" column="1" colspan="2">
-    <widget class="QLineEdit" name="image">
-     <property name="font">
-      <font>
-       <family>Sans Serif</family>
-       <pointsize>8</pointsize>
-      </font>
-     </property>
-    </widget>
+    <widget class="QLineEdit" name="image"/>
    </item>
    <item row="7" column="1">
     <widget class="QWidget" name="widget" native="true">
@@ -303,6 +235,19 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>image</tabstop>
+  <tabstop>browse</tabstop>
+  <tabstop>frame</tabstop>
+  <tabstop>selectframe</tabstop>
+  <tabstop>width</tabstop>
+  <tabstop>height</tabstop>
+  <tabstop>offset_x</tabstop>
+  <tabstop>offset_y</tabstop>
+  <tabstop>ratio_custom</tabstop>
+  <tabstop>ratio_equal</tabstop>
+  <tabstop>ratio_original</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
  <slots>
